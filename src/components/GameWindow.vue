@@ -3,13 +3,12 @@
 </template>
 
 <script setup lang="ts">
-import { Chunk, useWorldStore } from '@/stores/world';
+import { Chunk, gameWorld } from '@/gameobjects/world';
 import { onMounted, onUnmounted, ref } from 'vue';
 
 const gameCanvas = ref<HTMLCanvasElement>();
 let ctx : CanvasRenderingContext2D | null = null;
 
-const worldStore = useWorldStore();
 const loadedChunks = new Array<Chunk>();
 
 let viewOffsetX = 0;
@@ -60,7 +59,7 @@ onMounted(() => {
 		return;
 	}
 	
-	const chunk = worldStore.world.generateChunk(0, 0);
+	const chunk = gameWorld.generateChunk(0, 0);
 	loadedChunks.push(chunk);
 
 	gameCanvas.value.addEventListener('wheel', (e) => zoom(e.deltaY));
