@@ -5,22 +5,22 @@ import { GameTile, tiles, tileSize } from '@/gameobjects/tiles';
 const chunkSize = 16;
 
 class Chunk {
-	#tiles: Array<GameTile>
+	tiles: Array<GameTile>
 
 	constructor(fillTile?: GameTile) {
-		this.#tiles = new Array<GameTile>(chunkSize * chunkSize);
+		this.tiles = new Array<GameTile>(chunkSize * chunkSize);
 
 		if (fillTile) {
-			this.#tiles.fill(fillTile);
+			this.tiles.fill(fillTile);
 		}
 	}
 
 	setTile(i: number, j: number, tile: GameTile): void {
-		this.#tiles[i * chunkSize + j] = tile;
+		this.tiles[i * chunkSize + j] = tile;
 	}
 
 	getTile(i: number, j: number): GameTile {
-		return this.#tiles[i * chunkSize + j];
+		return this.tiles[i * chunkSize + j];
 	}
 
 	draw(ctx: CanvasRenderingContext2D, x: number, y: number) {
